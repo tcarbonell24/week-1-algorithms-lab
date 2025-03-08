@@ -1,0 +1,33 @@
+#pseudocode is written assuming the user already has an account active with the bank and is signed in
+
+var userID
+var userPassword
+var targetAmount
+var targetDate
+var savingsGoal
+var amountSaved
+
+
+# This function signs the user in, or gives an error message if any information is incorrect
+function signIn {
+    1. user inputs userID
+    2. user inputs inputPassword
+    if (userPassword == inputPassword)
+        sign in user
+        else (print "Incorrect username or password)
+}
+
+# This function collects the savings goal, current savings, and target date from the user
+function savingsTrackerInputs {
+    1. "What is your target amount?"
+    input targetAmount
+
+    2. "What is your starting amount?"
+    input amountSaved
+
+    3. "When do you want to reach your goal by?"
+    input targetDate
+
+    return
+}
+
