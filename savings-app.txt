@@ -1,4 +1,5 @@
-#pseudocode is written assuming the user already has an account active with the bank and is signed in
+#pseudocode is written assuming the user already has an account active with the bank
+
 
 var userID
 var userPassword
@@ -6,28 +7,112 @@ var targetAmount
 var targetDate
 var savingsGoal
 var amountSaved
+var currentDate = #this variable is set dynamically based on the user's local date
+var totalDays
 
 
 # This function signs the user in, or gives an error message if any information is incorrect
-function signIn {
-    1. user inputs userID
+function signIn(inputID, inputPassword) {
+    1. user inputs inputID
     2. user inputs inputPassword
-    if (userPassword == inputPassword)
+    if (inputID == userID) and (userPassword == inputPassword)
+    and
         sign in user
         else (print "Incorrect username or password)
 }
 
-# This function collects the savings goal, current savings, and target date from the user
-function savingsTrackerInputs {
-    1. "What is your target amount?"
-    input targetAmount
+#This function displays the main user account page 
+function accountPage() {
+    display: "Welcome to your account!"
+}
 
-    2. "What is your starting amount?"
-    input amountSaved
 
-    3. "When do you want to reach your goal by?"
-    input targetDate
+#This function collects the targetAmount from user input
+function inputTargetAmount() {
+    display: "How much do you want to save?"
+    targetAmount = input(float)
+
+    return targetAmount
+}
+
+
+#This function collects the targetDate from user input
+function inputTargetDate() {
+    display: "When do you want to save this by?"
+    targetDate = input(int)
+
+    return targetDate
+}
+
+#This function allows the user to deposit money into their savings
+function savingsDeposit (amountSaved) {
+    amountSaved += input(float)
+
+    return amountSaved
+}
+
+
+#This function determines the number of days between current date and target date
+function howManyDays(targetDate, currentDate, totalDays) {
+    totalDays = targetDate - currentDate
+
+    return totalDays
+}
+
+#This function determines the daily savings goal by dividing amount saved by days remaining
+function dailySavingsGoal(totalDays, amountSaved, targetAmount) {
+    remainingAmmount = targetAmount - amountSaved
+    
+    savingsGoal = amountSaved / totalDays
+
+    return savingsGoal
+}
+
+
+#This function displays the savings goal as a number to save per days
+function showSavingsGoal () {
+    display: "You should aim to save ${savingsGoal} every day! Deposit more than that, and you'll reach your goal faster!"
+}
+
+
+#This function prompts the user to use the savings tracker feature
+function trySavingsTracker(bool) {
+    display: "Would you like to try our new Savings Tracker?"
+    if(yes)
+        run savingsTrackerInputs()
+    else
+        run accountPage()
 
     return
 }
 
+#This function runs the functions defined above that prompt the user to input the necessary data for the savings tracker. It prompts them if they want to change anything if they already ahve a value set
+function savingsTrackerInputs() {
+    if (targetAmount has a value) 
+        display: "Do you want to update your Target Amount?"
+            if (yes)
+            run inputTargetAmount
+            else 
+            break
+    else
+        run inputTargetAmount
+
+    if (targetDate has a value) 
+        display: "Do you want to update your Target Date?"
+            if (yes)
+            run inputTargetDate
+            else 
+            break
+    else
+        run inputTargetDate
+
+    run savingsDeposit
+
+    run showSavingsGoal
+}
+
+
+
+#This section runs the functions when the user opens the app
+run signIn()
+run trySavingsTracker()
