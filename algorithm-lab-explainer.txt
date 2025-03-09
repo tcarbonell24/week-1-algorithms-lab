@@ -1,0 +1,9 @@
+Thomas Carbonell
+Algorithm Lab
+03/08/25
+
+My idea behind my implementation of this code was to compartmentalize as much as possible for flexibility. Most of the functions only do one or two things. For example, inputTargetAmount() simply displays the sentence "How much do you want to save?", and then asks the user to input a number as a float, and then return that value.
+
+I initially tried to have fewer, larger functions that performed multiple tasks at once, but I quickly ran into issues with managing scope and data. I then simplified each task as much as possible, and then created a function for that task specifically. With this structure, it allows functions to nest and helps avoid redundancies and overlap by trying to have a function perform multiple tasks at once. The largest function is savingsTrackerInputs(), which itself has multiple if/else statements, each of which can run a nested function depending on user input.
+
+This then allows me to call functions at the end. The code should prompt the user to sign in, ask if they’d like to use the savings feature, and, if need be, ask the user for their goals and current amount, and finally display a daily savings goal that updates dynamically based on both on how many days they have remaining for their target, and how much money is left for them to save.
