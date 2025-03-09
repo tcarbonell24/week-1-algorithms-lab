@@ -106,9 +106,13 @@ function savingsTrackerInputs() {
     else
         run inputTargetDate
 
-    run savingsDeposit
-
-    run showSavingsGoal
+    display: "Do you want to deposit money into your savings tracker?"
+    if (yes)
+        run savingsDeposit
+        run showSavingsGoal
+    else
+        run showSavingsGoal
+        
 }
 
 
