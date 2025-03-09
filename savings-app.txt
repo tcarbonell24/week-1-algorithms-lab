@@ -81,9 +81,7 @@ function trySavingsTracker(bool) {
     if(yes)
         run savingsTrackerInputs()
     else
-        run accountPage()
-
-    return
+        break
 }
 
 #This function runs the functions defined above that prompt the user to input the necessary data for the savings tracker. It prompts them if they want to change anything if they already ahve a value set
@@ -112,7 +110,7 @@ function savingsTrackerInputs() {
         run showSavingsGoal
     else
         run showSavingsGoal
-        
+
 }
 
 
@@ -120,3 +118,4 @@ function savingsTrackerInputs() {
 #This section runs the functions when the user opens the app
 run signIn()
 run trySavingsTracker()
+run accountPage()
